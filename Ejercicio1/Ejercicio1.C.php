@@ -13,7 +13,7 @@ $listado = array(
     array(array('Basico' => 90, 'Intermedio' => 25, 'Avanzado' => 67)),  //Japones
 );
 
-// Función que recorre el arreglo $listado y muestra una tabla con los datos del curso seleccionado
+// Función que recorre el arreglo listado y muestra una tabla con los datos del curso seleccionado
 function Recorrido($cursos, $condicion)
 {
     echo " <div class=\"table-responsive\"><table class=\"table table-striped table-bordered\"> <thead><tr><th>Nivel</th><th>Cantidad</th></tr></thead><tbody>";
@@ -21,7 +21,15 @@ function Recorrido($cursos, $condicion)
     foreach ($cursos[$condicion] as $fila) {
         // Recorre los niveles dentro los cursos y muestra la cantidad de estudiantes
         foreach ($fila as $fila => $elemento) {
-            echo "<tr class=\"bg-success\">
+            $color = '';
+            if ($fila == 'Basico') {
+                $color = 'alert alert-success';
+            } elseif ($fila == 'Intermedio') {
+                $color = 'alert alert-warning'; 
+            } elseif ($fila == 'Avanzado') {
+                $color = 'alert alert-danger'; 
+            } 
+            echo "<tr class=\"$color\">
                     <th scope=\"row\">" . $fila . "</th>
                     <td>" . $elemento . "</td>
                     </tr>";
